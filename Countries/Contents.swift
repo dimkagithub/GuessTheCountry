@@ -195,7 +195,6 @@ var countriesArray = [
     "🇹🇻 Тувалу": "Фунафути",
     "🇫🇯 Фиджи": "Сува"
     ]
-
 countriesArray.count
 var countryCount = 0
 repeat {
@@ -205,10 +204,14 @@ print("Столица государства \(country!)?")
 print(city!)
 if city == countriesArray[country!] {
     countriesArray.removeValue(forKey: country!)
-    print("ПРАВИЛЬНО!\nОсталось \(countriesArray.count) государств.\n")
+    if countriesArray.count == 0 {
+      print("☑️ ПРАВИЛЬНО!\n")
+    } else {
+        print("☑️ ПРАВИЛЬНО!\nОсталось \(countriesArray.count) государств.\n")
+    }
     countryCount += 1
 } else {
-    print("НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(countriesArray[country ?? ""]!).\n")
+    print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(countriesArray[country ?? ""]!).\n")
 }
 } while countriesArray.count > 0
 print("Столицы всех \(countryCount) государств угаданы правильно!")
