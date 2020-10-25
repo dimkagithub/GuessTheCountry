@@ -1,4 +1,6 @@
-var countriesArray = [
+import Foundation
+
+var asiaArray = [
     "🇦🇿 Азербайджан ": "Баку",
     "🇦🇲 Армения": "Ереван",
     "🇦🇫 Афганистан": "Кабул",
@@ -46,7 +48,9 @@ var countriesArray = [
     "🇺🇿 Узбекистан": "Ташкент",
     "🇵🇭 Филиппины": "Манила",
     "🇱🇰 Шри-Ланка": "Шри-Джаяварденепура-Котте",
-    "🇯🇵 Япония": "Токио",
+    "🇯🇵 Япония": "Токио"
+    ]
+var europeArray = [
     "🇦🇹 Австрия": "Вена",
     "🇦🇱 Албания": "Тирана",
     "🇦🇩 Андорра": "Андорра-ла-Велья",
@@ -90,7 +94,9 @@ var countriesArray = [
     "🇨🇿 Чехия": "Прага",
     "🇨🇭 Швейцария": "Бёрн",
     "🇸🇪 Швеция": "Стокгольм",
-    "🇪🇪 Эстония": "Таллин",
+    "🇪🇪 Эстония": "Таллин"
+    ]
+var africaArray = [
     "🇩🇿 Алжир": "Алжир",
     "🇦🇴 Ангола": "Луанда",
     "🇧🇯 Бенин": "Порто-Ново",
@@ -144,7 +150,9 @@ var countriesArray = [
     "🇪🇷 Эритрея": "Асмэра",
     "🇪🇹 Эфиопия": "Аддис-Абеба",
     "🇿🇦 ЮАР (Южно-Африканская Республика)": "Претория",
-    "🇸🇸 Южный Судан": "Джуба",
+    "🇸🇸 Южный Судан": "Джуба"
+    ]
+var americaArray = [
     "🇦🇬 Антигуа и Барбуда": "Сент-Джонс",
     "🇦🇷 Аргентина": "Буэнос-Айрес",
     "🇧🇸 Багамские острова": "Нассау",
@@ -180,7 +188,9 @@ var countriesArray = [
     "🇺🇾 Уругвай": "Монтевидео",
     "🇨🇱 Чили": "Сантьяго",
     "🇪🇨 Эквадор": "Кито",
-    "🇯🇲 Ямайка": "Кингстон",
+    "🇯🇲 Ямайка": "Кингстон"
+    ]
+var australiaArray = [
     "🇦🇺 Австралия": "Канберра",
     "🇻🇺 Вануату": "Порт-Вила",
     "🇰🇮 Кирибати": "Южная Тарава",
@@ -195,23 +205,181 @@ var countriesArray = [
     "🇹🇻 Тувалу": "Фунафути",
     "🇫🇯 Фиджи": "Сува"
     ]
-countriesArray.count
-var countryCount = 0
-repeat {
-let country = countriesArray.keys.randomElement()
-let city = countriesArray.values.randomElement()
-print("Столица государства \(country!)?")
-print(city!)
-if city == countriesArray[country!] {
-    countriesArray.removeValue(forKey: country!)
-    if countriesArray.count == 0 {
-      print("☑️ ПРАВИЛЬНО!\n")
-    } else {
-        print("☑️ ПРАВИЛЬНО!\nОсталось \(countriesArray.count) государств.\n")
+
+let twoArrays = asiaArray.merging(europeArray, uniquingKeysWith: { (_, last) in last })
+let threeArrays = twoArrays.merging(africaArray, uniquingKeysWith: { (_, last) in last })
+let fourArrays = threeArrays.merging(americaArray, uniquingKeysWith: { (_, last) in last })
+var allRegionsArray = fourArrays.merging(australiaArray, uniquingKeysWith: { (_, last) in last })
+
+func chooseRegion(_ region: String) {
+    switch region {
+    case "азия", "asia":
+        var countryCount = 0
+        repeat {
+            let country = asiaArray.keys.randomElement()
+            let city = asiaArray.values.randomElement()
+            print("Столица государства \(country!)?")
+            print(city!)
+            if city == asiaArray[country!] {
+                asiaArray.removeValue(forKey: country!)
+                if asiaArray.count == 0 {
+                  print("☑️ ПРАВИЛЬНО!\n")
+                } else {
+                    print("☑️ ПРАВИЛЬНО!\nОсталось \(asiaArray.count) государств.\n")
+                }
+                countryCount += 1
+            } else {
+                print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(asiaArray[country ?? ""]!).\n")
+            }
+        } while asiaArray.count > 0
+        print("Столицы всех \(countryCount) государств угаданы правильно!")
+    case "европа", "europe":
+        var countryCount = 0
+        repeat {
+            let country = europeArray.keys.randomElement()
+            let city = europeArray.values.randomElement()
+            print("Столица государства \(country!)?")
+            print(city!)
+            if city == europeArray[country!] {
+                europeArray.removeValue(forKey: country!)
+                if europeArray.count == 0 {
+                  print("☑️ ПРАВИЛЬНО!\n")
+                } else {
+                    print("☑️ ПРАВИЛЬНО!\nОсталось \(europeArray.count) государств.\n")
+                }
+                countryCount += 1
+            } else {
+                print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(europeArray[country ?? ""]!).\n")
+            }
+        } while europeArray.count > 0
+        print("Столицы всех \(countryCount) государств угаданы правильно!")
+    case "африка", "africa":
+        var countryCount = 0
+        repeat {
+            let country = africaArray.keys.randomElement()
+            let city = africaArray.values.randomElement()
+            print("Столица государства \(country!)?")
+            print(city!)
+            if city == africaArray[country!] {
+                africaArray.removeValue(forKey: country!)
+                if africaArray.count == 0 {
+                  print("☑️ ПРАВИЛЬНО!\n")
+                } else {
+                    print("☑️ ПРАВИЛЬНО!\nОсталось \(africaArray.count) государств.\n")
+                }
+                countryCount += 1
+            } else {
+                print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(africaArray[country ?? ""]!).\n")
+            }
+        } while africaArray.count > 0
+        print("Столицы всех \(countryCount) государств угаданы правильно!")
+    case "америка", "america":
+        var countryCount = 0
+        repeat {
+            let country = americaArray.keys.randomElement()
+            let city = americaArray.values.randomElement()
+            print("Столица государства \(country!)?")
+            print(city!)
+            if city == americaArray[country!] {
+                americaArray.removeValue(forKey: country!)
+                if americaArray.count == 0 {
+                  print("☑️ ПРАВИЛЬНО!\n")
+                } else {
+                    print("☑️ ПРАВИЛЬНО!\nОсталось \(americaArray.count) государств.\n")
+                }
+                countryCount += 1
+            } else {
+                print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(americaArray[country ?? ""]!).\n")
+            }
+        } while americaArray.count > 0
+        print("Столицы всех \(countryCount) государств угаданы правильно!")
+    case "австралия", "australia":
+        var countryCount = 0
+        repeat {
+            let country = australiaArray.keys.randomElement()
+            let city = australiaArray.values.randomElement()
+            print("Столица государства \(country!)?")
+            print(city!)
+            if city == australiaArray[country!] {
+                australiaArray.removeValue(forKey: country!)
+                if australiaArray.count == 0 {
+                  print("☑️ ПРАВИЛЬНО!\n")
+                } else {
+                    print("☑️ ПРАВИЛЬНО!\nОсталось \(australiaArray.count) государств.\n")
+                }
+                countryCount += 1
+            } else {
+                print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(australiaArray[country ?? ""]!).\n")
+            }
+        } while australiaArray.count > 0
+        print("Столицы всех \(countryCount) государств угаданы правильно!")
+    case "все регионы", "all regions":
+        var countryCount = 0
+        repeat {
+            let country = allRegionsArray.keys.randomElement()
+            let city = allRegionsArray.values.randomElement()
+            print("Столица государства \(country!)?")
+            print(city!)
+            if city == allRegionsArray[country!] {
+                allRegionsArray.removeValue(forKey: country!)
+                if allRegionsArray.count == 0 {
+                  print("☑️ ПРАВИЛЬНО!\n")
+                } else {
+                    print("☑️ ПРАВИЛЬНО!\nОсталось \(allRegionsArray.count) государств.\n")
+                }
+                countryCount += 1
+            } else {
+                print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(allRegionsArray[country ?? ""]!).\n")
+            }
+        } while allRegionsArray.count > 0
+        print("Столицы всех \(countryCount) государств угаданы правильно!")
+    default:
+        print("Нет такого региона!")
     }
-    countryCount += 1
-} else {
-    print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(countriesArray[country ?? ""]!).\n")
 }
-} while countriesArray.count > 0
-print("Столицы всех \(countryCount) государств угаданы правильно!")
+
+let date = Date()
+let calendar = Calendar.current
+let hour = calendar.component(.hour, from: date)
+let minute = calendar.component(.minute, from: date)
+var formatter = DateFormatter()
+formatter.locale = Locale(identifier: "ru_Ru")
+formatter.dateFormat = "EEEE, MMM d, yyyy"
+formatter.dateStyle = .short
+let currentDate = formatter.string(from: date)
+print("\(currentDate), \(hour):\(minute)\n")
+
+print("""
+Выберите регион:
+1. Азия
+2. Европа
+3. Африка
+4. Америка
+5. Австралия
+6. Все регионы
+
+""")
+
+sleep(UInt32.random(in: 2...6))
+let choice = Int.random(in: 1...7)
+if choice == 1 {
+    print("Азия\n")
+    chooseRegion("азия")
+} else if choice == 2 {
+    print("Европа\n")
+    chooseRegion("европа")
+} else if choice == 3 {
+    print("Африка\n")
+    chooseRegion("африка")
+} else if choice == 4 {
+    print("Америка\n")
+    chooseRegion("америка")
+} else if choice == 5 {
+    print("Автсралия\n")
+    chooseRegion("австралия")
+} else if choice == 6 {
+    print("Все регионы\n")
+    chooseRegion("все регионы")
+} else {
+    chooseRegion("")
+}
