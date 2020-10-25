@@ -232,7 +232,7 @@ func chooseRegion(_ region: String) {
                 print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(asiaArray[country ?? ""]!).\n")
             }
         } while asiaArray.count > 0
-        print("Столицы всех \(countryCount) государств угаданы правильно!")
+        print("Столицы всех \(countryCount) государств региона Азия угаданы правильно!")
     case "европа", "europe":
         var countryCount = 0
         repeat {
@@ -252,7 +252,7 @@ func chooseRegion(_ region: String) {
                 print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(europeArray[country ?? ""]!).\n")
             }
         } while europeArray.count > 0
-        print("Столицы всех \(countryCount) государств угаданы правильно!")
+        print("Столицы всех \(countryCount) государств региона Европа угаданы правильно!")
     case "африка", "africa":
         var countryCount = 0
         repeat {
@@ -272,7 +272,7 @@ func chooseRegion(_ region: String) {
                 print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(africaArray[country ?? ""]!).\n")
             }
         } while africaArray.count > 0
-        print("Столицы всех \(countryCount) государств угаданы правильно!")
+        print("Столицы всех \(countryCount) государств региона Африка угаданы правильно!")
     case "америка", "america":
         var countryCount = 0
         repeat {
@@ -292,7 +292,7 @@ func chooseRegion(_ region: String) {
                 print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(americaArray[country ?? ""]!).\n")
             }
         } while americaArray.count > 0
-        print("Столицы всех \(countryCount) государств угаданы правильно!")
+        print("Столицы всех \(countryCount) государств региона Америка угаданы правильно!")
     case "австралия", "australia":
         var countryCount = 0
         repeat {
@@ -312,7 +312,7 @@ func chooseRegion(_ region: String) {
                 print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(australiaArray[country ?? ""]!).\n")
             }
         } while australiaArray.count > 0
-        print("Столицы всех \(countryCount) государств угаданы правильно!")
+        print("Столицы всех \(countryCount) государств региона Австралия угаданы правильно!")
     case "все регионы", "all regions":
         var countryCount = 0
         repeat {
@@ -332,7 +332,7 @@ func chooseRegion(_ region: String) {
                 print("❌ НЕ ПРАВИЛЬНО!\nСтолицей государства \(country!) является \(allRegionsArray[country ?? ""]!).\n")
             }
         } while allRegionsArray.count > 0
-        print("Столицы всех \(countryCount) государств угаданы правильно!")
+        print("Столицы всех \(countryCount) государств мира угаданы правильно!")
     default:
         print("Нет такого региона!")
     }
@@ -364,22 +364,29 @@ sleep(UInt32.random(in: 2...6))
 let choice = Int.random(in: 1...7)
 if choice == 1 {
     print("Азия\n")
+    sleep(UInt32.random(in: 2...6))
     chooseRegion("азия")
 } else if choice == 2 {
     print("Европа\n")
+    sleep(UInt32.random(in: 2...6))
     chooseRegion("европа")
 } else if choice == 3 {
     print("Африка\n")
+    sleep(UInt32.random(in: 2...6))
     chooseRegion("африка")
 } else if choice == 4 {
     print("Америка\n")
+    sleep(UInt32.random(in: 2...6))
     chooseRegion("америка")
 } else if choice == 5 {
-    print("Автсралия\n")
+    print("Австралия\n")
+    sleep(UInt32.random(in: 2...6))
     chooseRegion("австралия")
 } else if choice == 6 {
     print("Все регионы\n")
+    sleep(UInt32.random(in: 2...6))
     chooseRegion("все регионы")
 } else {
+    sleep(UInt32.random(in: 2...6))
     chooseRegion("")
 }
